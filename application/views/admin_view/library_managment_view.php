@@ -46,23 +46,23 @@
 						<?php 
 
 							$txtSlNo=$edit_data[0]['sl_no'];
-							$txtAccNo=$edit_data[0]['sl_no'];
-							$txtBookNo=$edit_data[0]['sl_no'];
-							$txtSubject=$edit_data[0]['sl_no'];
-							$txtTitle=$edit_data[0]['sl_no'];
-							$txtEdition=$edit_data[0]['sl_no'];
-							$txtAuthor1=$edit_data[0]['sl_no'];
-							$txtAuthor2=$edit_data[0]['sl_no'];
-							$txtAuthor3=$edit_data[0]['sl_no'];
-							$txtPublisher=$edit_data[0]['sl_no'];
-							$txtDateOfPublication=$edit_data[0]['sl_no'];
-							$txtPrice=$edit_data[0]['sl_no'];
-							$ddlType=$edit_data[0]['sl_no'];
-							$txtCodeNo=$edit_data[0]['sl_no'];
-							$txtISBN=$edit_data[0]['sl_no'];
-							$ddlStatus=$edit_data[0]['sl_no'];
-							$txtDescription=$edit_data[0]['sl_no'];
-							$txtAdditionalDetails=$edit_data[0]['sl_no'];
+							$txtAccNo=$edit_data[0]['acc_no'];
+							$txtBookNo=$edit_data[0]['book_no'];
+							$txtSubject=$edit_data[0]['subject'];
+							$txtTitle=$edit_data[0]['title'];
+							$txtEdition=$edit_data[0]['edition'];
+							$txtAuthor1=$edit_data[0]['author1'];
+							$txtAuthor2=$edit_data[0]['author2'];
+							$txtAuthor3=$edit_data[0]['author3'];
+							$txtPublisher=$edit_data[0]['publisher'];
+							$txtDateOfPublication=$edit_data[0]['date_of_publish'];
+							$txtPrice=$edit_data[0]['price'];
+							$ddlType=$edit_data[0]['type'];
+							$txtCodeNo=$edit_data[0]['call_no'];
+							$txtISBN=$edit_data[0]['call_no'];
+							$ddlStatus=$edit_data[0]['status'];
+							$txtDescription=$edit_data[0]['tag'];
+							$txtAdditionalDetails=$edit_data[0]['additional'];
 
 						?>
 						<form class="" action="<?php echo base_url() ?>delete-book-<?php echo $edit_id; ?>" method= 'post' target="">
