@@ -1,0 +1,161 @@
+@charset "utf-8";
+/* CSS Document by Partha Pratim Sinha. DO NOT COPY */
+
+#topbar{
+color:#003366;
+padding:5px 0px 5px 0px;
+border-bottom:#003366 1px solid;
+font-size:14px;}
+
+#footbar{
+color:#003366;
+padding:10px 0px;
+font-family: 'Hind Siliguri', sans-serif;
+background-color:#93DCFF; 
+border-top:#003366 1px solid;
+font-size:14px;}
+
+#logobar {
+padding:0px 0px 0px 0px;
+}
+
+#dashboardbody{
+padding-top:0px;
+padding-bottom:20px;}
+
+#mainbody{
+padding-top:20px;
+padding-bottom:35px;}
+
+hr.style5 {
+	background-color: #fff;
+	border-top: 2px dashed #0080C0;
+}
+
+
+.bodyheading{
+color:#0080C0;
+font-size:18px;
+font-weight:600;
+font-family: 'Oswald', sans-serif;
+font-family: 'Merriweather', serif;
+font-family: 'Crimson Text', serif;}
+
+
+#listviews{
+padding-top:50px;
+padding-bottom:50px;
+background-color:#fff;
+border-top:#ccc 1px solid;
+width:100%;
+}
+
+hr.style3 {
+	border-top: 1px dashed #0099FF;
+}
+
+/* For scrollbar-------------------------------------- */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 6px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+/* For scrollbar-------------------------------------- */
+
+
+
+/* For Navbar-------------------------------------- */
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+color: #fff;
+background-color: #428bca;
+border-radius:0px;
+}
+
+
+.margintop20 {
+    margin-top:20px;
+}
+
+.nav-pills>li>a {
+border-radius: 0px;
+}
+
+a {
+color: #000;
+text-decoration: none;
+}
+
+a:hover {
+color: #000;
+text-decoration: none;
+}
+
+
+.nav-stacked>li+li {
+margin-top: 0px;
+margin-left: 0;
+border-bottom:1px solid #dadada;
+border-left:1px solid #dadada;
+border-right:1px solid #dadada;
+}
+
+.active2 {
+    border-right:4px solid #428bca;
+}
+
+
+.navbar-inverse {
+    background-color: #0080C0 !important;
+    border-color: #0080c0 !important;
+    border-radius: 0px 0px 4px 4px !important;
+	padding-left:0px !important;
+	background-image: -webkit-linear-gradient(top,#0080C0 0,#0080C0 100%)!important;
+    background-image: -o-linear-gradient(top,#0080C0 0,#0080C0 100%)!important;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#0080C0),to(#0080C0))!important;
+    background-image: linear-gradient(to bottom,#0080C0 0,#0080C0 100%)!important;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fffefe !important;}
+
+/* For Navbar-------------------------------------- */
+
+
+
+
+/* For Slider---------------------------------------- */
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;
+	  height:420px !important;
+	  padding:0px !important;
+  }
+/* For Slider---------------------------------------- */
+
+
+/* For Gallery-------------------------------------------------------------------------------------------------------------- */
+.modal-dialog {width:600px;}
+.thumbnail {margin-bottom:6px;}
+
+/* For Gallery--------------------------------------------------------------------------------------------------------------- */
+
+
+
+@media (min-width: 320px) and (max-width: 800px) {
+
+.spacing{
+margin-bottom:10px;
+text-align:center !important;}
+
+
+
+}
