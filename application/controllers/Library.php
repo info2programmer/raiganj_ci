@@ -53,7 +53,8 @@ class Library extends CI_Controller {
 				'isbn_no' => $txtISBN,
 				'type' => $ddlType,
 				'tag' => $txtDescription,
-				'additional' => $txtAdditionalDetails
+				'additional' => $txtAdditionalDetails,
+				'status' => $ddlStatus
 			);
 
 			$this->library_model->save_books($save_object);
@@ -83,6 +84,55 @@ class Library extends CI_Controller {
 	// Edit Books 
 	public function edit_books($id)
 	{
+		if($this->input->post('btnSave') == 'save'){
+			//Get All Post Data
+			$txtSlNo=$this->security->xss_clean($this->input->post('txtSlNo'));
+			$txtAccNo=$this->security->xss_clean($this->input->post('txtAccNo'));
+			$txtBookNo=$this->security->xss_clean($this->input->post('txtBookNo'));
+			$txtSubject=$this->security->xss_clean($this->input->post('txtSubject'));
+			$txtTitle=$this->security->xss_clean($this->input->post('txtTitle'));
+			$txtEdition=$this->security->xss_clean($this->input->post('txtEdition'));
+			$txtAuthor1=$this->security->xss_clean($this->input->post('txtAuthor1'));
+			$txtAuthor2=$this->security->xss_clean($this->input->post('txtAuthor2'));
+			$txtAuthor3=$this->security->xss_clean($this->input->post('txtAuthor3'));
+			$txtPublisher=$this->security->xss_clean($this->input->post('txtPublisher'));
+			$txtDateOfPublication=$this->security->xss_clean($this->input->post('txtDateOfPublication'));
+			$txtPrice=$this->security->xss_clean($this->input->post('txtPrice'));
+			$ddlType=$this->security->xss_clean($this->input->post('ddlType'));
+			$txtCodeNo=$this->security->xss_clean($this->input->post('txtCodeNo'));
+			$txtISBN=$this->security->xss_clean($this->input->post('txtISBN'));
+			$ddlStatus=$this->security->xss_clean($this->input->post('ddlStatus'));
+			$txtDescription=$this->security->xss_clean($this->input->post('txtDescription'));
+			$txtAdditionalDetails=$this->security->xss_clean($this->input->post('txtAdditionalDetails'));
+			$txtEditId=$this->security->xss_clean($this->input->post('txtEditId'));
+
+			$update_obj=array(
+				'sl_no' => $txtSlNo,
+				'acc_no' => $txtAccNo,
+				'book_no' => $txtBookNo,
+				'subject' => $txtSubject,
+				'title' => $txtTitle,
+				'edition' => $txtEdition,
+				'author1' => $txtAuthor1,
+				'author2' => $txtAuthor2,
+				'author3' => $txtAuthor3,
+				'publisher' => $txtPublisher,
+				'date_of_publish' => $txtDateOfPublication,
+				'price' => $txtPrice,
+				'call_no' => $txtCodeNo,
+				'isbn_no' => $txtISBN,
+				'type' => $ddlType,
+				'tag' => $txtDescription,
+				'additional' => $txtAdditionalDetails,
+				'status' => $ddlStatus
+			);
+
+			$this->library_model->update_book_data($update_obj,$txtEditId);
+
+			$this->session->set_flashdata('update_log', 'Book Save Successfully');
+			redirect('manage-books');
+		}
+		
 		$data=array(
 			'main_view' => 'admin_view/library_managment_view',
 			'book_list' => $this->library_model->get_all_books(),

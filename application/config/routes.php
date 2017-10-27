@@ -91,6 +91,8 @@ $route['daily-collection']='fees/daily_report';
 
  //This is Librery Routes
  $route['manage-books']='library/manage_books';
- $route['delete-book-(:num)']='library/delete_book/$1';
+ $route['delete-book-(:num)']='library/delete_book/$1';//This Route For Delete Books
+ $route['edit-(:num)-book']='library/edit_books/$1';
+
 
 

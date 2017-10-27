@@ -31,6 +31,13 @@ class Library_model extends CI_Model {
 		return $query->result_array();
 	}
 
+	// Update Book Data
+	public function update_book_data($object,$id)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('library_books', $object);
+	}
+
 
 }
 
