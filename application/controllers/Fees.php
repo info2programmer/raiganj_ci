@@ -204,7 +204,7 @@ class Fees extends CI_Controller {
 			);
 			// echo $this->db->last_query();
 			// die;
-			$this->load->view('admin_view/daily_report_generate_view.php', $data);
+			$this->load->view('admin_view/daily_report_generate_view', $data);
 		}
 		else{
 			$data=array(

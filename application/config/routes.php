@@ -92,7 +92,9 @@ $route['daily-collection']='fees/daily_report';
  //This is Librery Routes
  $route['manage-books']='library/manage_books';
  $route['delete-book-(:num)']='library/delete_book/$1';//This Route For Delete Books
- $route['edit-(:num)-book']='library/edit_books/$1';
+ $route['edit-(:num)-book']='library/edit_books/$1';//Edit Book Stuff Do Here
+ $route['book-(:num)-issu']='library/issu_book_by_book_id/$1'; // Issu Book By Book Id
+ $route['return-(:num)-book']='library/return_book_by_book_id/$1'; // Issu Book By Book Id
 
 
 

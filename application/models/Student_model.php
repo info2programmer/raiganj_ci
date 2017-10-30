@@ -215,6 +215,21 @@ class Student_model extends CI_Model {
 		}
 	}
 
+
+	// This Function to Get Student By From Name
+	public function get_student_by_form_name($form_number,$year)
+	{
+		if($year=="1st"){
+			$this->db->where('form_no', $form_number);
+			$query=$this->db->get('admission_erp');
+			return $query->result_array();
+		}
+		else{
+			$this->db->where('addmission_no', $form_number);
+			$query=$this->db->get('student_dtl');
+			return $query->result_array();
+		}	
+	}
 }
 
 /* End of file Student_model.php */

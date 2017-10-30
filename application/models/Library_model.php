@@ -38,6 +38,45 @@ class Library_model extends CI_Model {
 		$this->db->update('library_books', $object);
 	}
 
+	//Check Numbre Of Book Issu By student Id Form library_issue_book table
+	public function num_issu_books($application_id)
+	{
+		$this->db->where('member_id', $application_id);
+		$query=$this->db->get('library_issue_book');
+		return $query->num_rows();
+	}
+
+	// This Function For Insert Data In library_issue_book Table
+	public function issu_book($object,$book_id)
+	{
+		//Inset in To library_issue_book
+		$this->db->insert('library_issue_book', $object);
+		//Update library_books Table
+		$this->change_book_status($book_id,'Borrowed',1);
+	}
+
+	// Update Librery Books Table
+	public function change_book_status($book_id,$status,$is_reserved)
+	{
+		$updateObj=array(
+			'status' => $status,
+			'is_reserved' => $is_reserved
+		);
+		$this->db->where('id', $book_id);
+		$this->db->update('library_books', $updateObj);
+	}
+
+	// This Function To Return Book
+	public function return_book($book_id)
+	{
+		$this->db->where('book_no', $book_id);
+		$this->db->delete('library_issue_book');
+
+		$this->change_book_status($book_id,'Available',0);
+	}
+
+
+
 
 }
 
