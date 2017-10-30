@@ -231,7 +231,7 @@
    <div class="row">
 
     <div class="col-md-12 col-sm-12">
-      <h4 class="alert alert-info">List of Student</h4>           
+      <h4 class="alert alert-info">List of Books</h4>           
       <table width="935" class="table table-bordered" id="tblData">
         <thead>
           <tr>
@@ -259,6 +259,11 @@
             	<td>
             		<a href="<?php echo base_url() ?>delete-book-<?php echo $list->id ?>" onclick="return confirm('are you sure?');" class="btn btn-danger btn-xs">Delete</a>
             		<a href="<?php echo base_url() ?>edit-<?php echo $list->id ?>-book" onclick="return confirm('are you sure?');" class="btn btn-warning btn-xs">Edit</a>
+            		<?php if (!$list->is_reserved): ?>
+            			<a href="<?php echo base_url() ?>book-<?php echo $list->id ?>-issu" onclick="return confirm('are you sure?');" class="btn btn-info btn-xs">Issue This Book</a>
+            		<?php else: ?>
+            			<a href="<?php echo base_url() ?>return-<?php echo $list->id ?>-book" onclick="return confirm('are you sure?');" class="btn btn-info btn-xs">Return This Book</a>
+            		<?php endif ?>
             	</td>
             </tr>
           <?php endforeach ?>

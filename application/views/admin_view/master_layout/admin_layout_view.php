@@ -117,7 +117,9 @@
 
                     <li>
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Library <span class="caret"></span></a>
+                       <ul class="dropdown-menu">
                       <li><a href="<?php echo base_url() ?>manage-books">Manage Books</a></li>
+                    </ul>
                     </li>
                   </ul>
                   

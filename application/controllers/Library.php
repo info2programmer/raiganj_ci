@@ -142,6 +142,65 @@ class Library extends CI_Controller {
 		$this->load->view('admin_view/master_layout/admin_layout_view', $data);
 	}
 
+
+	// This Function to Load Issue Book View 
+	public function issu_book_by_book_id($book_id)
+	{	
+		//This for post data
+		if($this->input->post('btnSubmit') == 'submit'){
+			//Get All Values
+			$txtStudentID=$this->input->post('txtStudentID');
+			$ddlYear=$this->input->post('ddlYear');
+			$txtBookNumber=$this->input->post('txtBookNumber');
+			$txtBookTitle=$this->input->post('txtBookTitle');
+			$txtStudentName=$this->input->post('txtStudentName');
+			$txtBookTaken=$this->input->post('txtBookTaken');
+			$txtIssueDate=$this->input->post('txtIssueDate');
+			$due_date = date('Y-m-d',strtotime($txtIssueDate . "+15 days"));
+
+			$object=array(
+				'book_no' => $book_id,
+				'book_title' => $txtBookTitle,
+				'name' => $txtStudentName,
+				'type' => 'Student',
+				'issue_date' => $txtIssueDate,
+				'due_date' => $due_date,
+				'member_id' => $txtStudentID
+			);
+
+			$this->library_model->issu_book($object,$book_id);
+
+			echo "<script>alert('Book Issued');</script>";
+		}
+
+
+		$data=array(
+			'main_view' => 'admin_view/issu_librery_book_view',
+			'book_data' => $this->library_model->get_book_by_book_id($book_id),
+			'book_id' => $book_id
+		);
+		$this->load->view('admin_view/master_layout/admin_layout_view', $data);
+	}
+
+
+	// This Function To Get Number Of Issu Books And Studen Data Also
+	public function get_issu_book_and_student_data($application_id,$year)
+	{
+		$student_data=$this->student_model->get_student_by_form_name($application_id,$year);
+		$total_book_taken=$this->library_model->num_issu_books($application_id);
+
+		echo json_encode(array('book_taken' => $total_book_taken,'student_name' => $student_data[0]['name']));
+	}
+
+	// This Function For Return Book
+	public function return_book_by_book_id($book_id)
+	{
+		$this->library_model->return_book($book_id);
+		echo "<script>alert('Book Returned');</script>";
+		redirect('manage-books');
+	}
+
+
 }
 
 /* End of file Library.php */

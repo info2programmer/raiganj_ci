@@ -125,7 +125,11 @@
                     <td height="22" align="center" valign="middle" class="style11"><?php echo $array_element[2] ?></td>
                     <td height="22" align="center" valign="middle" class="style11"><?php echo $array_element[1] ?></td>
                     <?php foreach ($this->fees_model->get_amount_data($student_data->fee_id) as $key): ?>
+                      <?php echo $this->db->last_query();die; ?>
                      <td width="28" height="22" align="center" valign="middle" class="style11">
+                     <a class="tooltips" href="#"><?php echo $key->amount ?><span><?php echo $key->name ?></span></a>
+                    </td>
+                    <td width="28" height="22" align="center" valign="middle" class="style11">
                      <a class="tooltips" href="#"><?php echo $key->amount ?><span><?php echo $key->name ?></span></a>
                     </td>
                     <?php endforeach ?>
