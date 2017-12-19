@@ -10,7 +10,7 @@
   .p_wrap
   {
     width:700px;
-    margin:0px auto;		
+    margin:0px auto;
   }
 
   .p_wrap h2
@@ -87,6 +87,3 @@
 </div>
 </body>
 </html>
-<?php foreach($report_data as $rep):  ?>
-  <?php echo str_shuffle($rep->particular) ?>
-<?php endforeach; ?>

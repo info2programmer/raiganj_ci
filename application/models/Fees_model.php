@@ -75,7 +75,7 @@ class Fees_model extends CI_Model {
 			$this->db->join('stream', 'stream.id = td_fee_collection.stream', 'inner');
 			$query=$this->db->get();
 			return $query->result_array();
-			
+
 		}
 		else{
 			$this->db->where('td_fee_collection.year', $year);
@@ -105,14 +105,14 @@ class Fees_model extends CI_Model {
 	}
 
 
-	// This Function To Get All Sub-fund 
+	// This Function To Get All Sub-fund
 	public function get_sub_fund()
 	{
 		$query=$this->db->get('tb_fin_head');
 		return $query->result();
 	}
 
-	// This Function To Generate Ledger 
+	// This Function To Generate Ledger
 	public function gen_ledger($from_date,$to_date,$fee_id,$type)
 	{
 		$this->db->where('td_fee_subfunds.sub_date>=', $from_date);
@@ -165,10 +165,10 @@ class Fees_model extends CI_Model {
 
 
 
-	//This Function For Sub-funds Report 
+	//This Function For Sub-funds Report
 	public function sub_fund_report($txtTodate,$txtFromDate,$ddlSubfund)
 	{
-		
+
 		$this->db->where('td_fee_subfunds.sub_date>=', $txtFromDate);
 		$this->db->where('td_fee_subfunds.sub_date<=', $txtTodate);
 		$this->db->where('td_fee_subfunds.fee_head_id', $ddlSubfund);
@@ -178,10 +178,9 @@ class Fees_model extends CI_Model {
 		$this->db->join('tb_fin_head', 'tb_fin_head.id = td_fee_subfunds.fee_head_id', 'inner');
 		$query=$this->db->get();
 		return $query->result();
-
 	}
 
-	
+
 
 	// This Function To Show Daily Report
 	public function daily_report($txtFromDate,$txtToDate,$ddlYear)
@@ -193,7 +192,7 @@ class Fees_model extends CI_Model {
 		// $this->db->select('td_fee_collection.* , td_fee_subfunds.fee_head_id as feehead_id');
 		// $this->db->from('td_fee_collection');
 		// $this->db->join('td_fee_subfunds', 'td_fee_subfunds.fee_id = td_fee_collection.fee_id', 'INNER');
-		$this->db->limit(10);
+		// $this->db->limit(3);
 		$query=$this->db->get('td_fee_collection');
 		return $query->result();
 	}
@@ -203,8 +202,9 @@ class Fees_model extends CI_Model {
 	public function get_amount_by_feeid($fee_id)
 	{
 		$this->db->where('fee_id', $fee_id);
-
+		// $this->db->order_by('fee_id','asc');
 		$query=$this->db->get('td_fee_subfunds');
+
 		return $query->result();
 	}
 
@@ -216,18 +216,22 @@ class Fees_model extends CI_Model {
 	}
 
 
-	//This Function For Get Only Data 
+	//This Function For Get Only Data
 	public function get_amount_data($fee_id)
 	{
 		// $this->db->where('td_fee_subfunds.fee_head_id', $fee_head_id);
-		$this->db->where('td_fee_subfunds.fee_id', $fee_id);
+		// $this->db->where('td_fee_subfunds.fee_id', $fee_id);
 		$this->db->order_by('td_fee_subfunds.fee_head_id', 'asc');
 		$this->db->select('td_fee_subfunds.*, tb_fin_head.*');
 		$this->db->from('td_fee_subfunds');
 		$this->db->join('tb_fin_head', 'tb_fin_head.id = td_fee_subfunds.fee_head_id', 'INNER');
 		$query=$this->db->get();
+			// echo $this->db->last_query();
+			// die;
 		return $query->result();
 	}
+
+
 }
 
 /* End of file Fees_model.php */

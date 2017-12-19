@@ -41,12 +41,12 @@ class Fees extends CI_Controller {
 				'payment_type' => $ddlPaymentType
 			);
 		}
-		
-		$this->load->view('admin_view/master_layout/admin_layout_view', $data);	
+
+		$this->load->view('admin_view/master_layout/admin_layout_view', $data);
 	}
 
 
-	//This Function For Challan 
+	//This Function For Challan
 	public function challan($student_id,$year,$stream)
 	{
 		$newyearvalue= substr($year,0,-2);
@@ -61,7 +61,7 @@ class Fees extends CI_Controller {
 	public function finance_report()
 	{
 		$data = array(
-			'main_view' => 'admin_view/finance_report_view', 
+			'main_view' => 'admin_view/finance_report_view',
 		);
 		$this->load->view('admin_view/master_layout/admin_layout_view', $data);
 	}
@@ -127,7 +127,7 @@ class Fees extends CI_Controller {
 		else{
 			$data = array(
 				'session_list' => $this->fees_model->get_session(),
-				'main_view' => 'admin_view/income_expenditure_report_listing_view' 
+				'main_view' => 'admin_view/income_expenditure_report_listing_view'
 			);
 			$this->load->view('admin_view/master_layout/admin_layout_view', $data);
 		}
@@ -162,7 +162,7 @@ class Fees extends CI_Controller {
 		}
 	}
 
-	
+
 	// This Function For Get Receipt & Payment
 	public function receipt_payment()
 	{
@@ -179,7 +179,7 @@ class Fees extends CI_Controller {
 		else{
 			$data = array(
 				'session_list' => $this->fees_model->get_session(),
-				'main_view' => 'admin_view/receipt_payment_listing_view' 
+				'main_view' => 'admin_view/receipt_payment_listing_view'
 			);
 			$this->load->view('admin_view/master_layout/admin_layout_view', $data);
 		}
@@ -193,14 +193,16 @@ class Fees extends CI_Controller {
 
 		if($this->input->post('btnSearch') == 'search'){
 
-			//Get input Data Here 
+			//Get input Data Here
 			$ddlYear=$this->security->xss_clean($this->input->post('ddlYear'));
 			$txtFromDate=$this->security->xss_clean($this->input->post('txtFromDate'));
 			$txtToDate=$this->security->xss_clean($this->input->post('txtToDate'));
 
 			$data=array(
 				'report_data' => $this->fees_model->daily_report($txtFromDate,$txtToDate,$ddlYear),
-				'fees_head_data' => $this->fees_model->tb_fin_head()
+				'fees_head_data' => $this->fees_model->tb_fin_head(),
+				'from_date' => $txtFromDate,
+				'to_date' => $txtToDate
 			);
 			// echo $this->db->last_query();
 			// die;
@@ -213,6 +215,30 @@ class Fees extends CI_Controller {
 			$this->load->view('admin_view/master_layout/admin_layout_view', $data);
 		}
 	}
+
+	// This Function For Testing Daily Collection 2
+	public function daily_collection_report()
+	{
+			//Get input Data Here
+			if($this->input->post('btnSearch') == 'search'){
+				$ddlYear=$this->security->xss_clean($this->input->post('ddlYear'));
+				$txtFromDate=$this->security->xss_clean($this->input->post('txtFromDate'));
+				$txtToDate=$this->security->xss_clean($this->input->post('txtToDate'));
+
+				$data=array(
+					'from_date' => $txtFromDate,
+					'to_date' => $txtToDate,
+					'year' => $ddlYear
+				);
+				$this->load->view('admin_view/daily_report_view_2', $data);
+			}
+			else{
+				$data=array(
+					'main_view' => 'admin_view/daily_collection_listing_view'
+				);
+				$this->load->view('admin_view/master_layout/admin_layout_view', $data);
+			}
+		}
 }
 
 /* End of file Fees.php */

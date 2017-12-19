@@ -4,7 +4,7 @@
 			<div class="col-md-12 col-sm-12">
 				<h4 class="alert alert-info">Daily Collections </h4>
 				<div class="alert alert-success">
-					<form class="form-horizontal" action="<?php echo base_url() ?>daily-collection" method= 'post' target="_blank">
+					<form class="form-horizontal" action="<?php echo base_url() ?>daily_report_view_2.php" method= 'post' target="_blank">
 
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="ddlYear">Select Year :</label>
@@ -29,7 +29,7 @@
 								<input type="date" required name="txtToDate" id="txtToDate" class="form-control" placeholder="To Date">
 							</div>
 						</div>
-						<div class="form-group text-center"> 
+						<div class="form-group text-center">
 							<div class="col-sm-offset-2 col-sm-10">
 								<button type="submit" name="btnSearch" value="search" class="btn btn-default btn-lg"><i class="fa fa-search"></i> Search</button>
 							</div>

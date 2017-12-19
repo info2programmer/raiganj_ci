@@ -61,7 +61,7 @@
 								<input type="date" required name="txtIssueDate" value="<?php echo date('Y-m-d') ?>" id="txtIssueDate" class="form-control">
 							</div>
 						</div>
-						
+
 						<div class="form-group" align="center">
 							<button type="submit" id="btnSubmit" disabled name="btnSubmit" value="submit" class="btn btn-default btn-lg"><i class="fa fa-floppy-o" aria-hidden="true"></i> Issu Book</button>
 						</div>
@@ -89,7 +89,6 @@
 		        var datas = JSON.parse(this.responseText);
 		        document.getElementById('txtBookTaken').value=datas.book_taken;
 		        document.getElementById('txtStudentName').value=datas.student_name;
-
 		        if(document.getElementById('txtStudentName').value != ''){
 		        	document.getElementById("btnSubmit").disabled = false;
 		        }
