@@ -72,9 +72,6 @@
                         <li><a href="<?php echo base_url(); ?>student/">Student Listing</a></li>
                         <li><a href="<?php echo base_url(); ?>former-student-list/">Former Student List</a></li>
                         <li><a href="<?php echo base_url(); ?>cancel-student-list/">Canecl Student List</a></li>
-                        <!-- <li><a href="create-department.php">Create Department</a></li>
-                        <li><a href="create-user.php">Create User</a></li>
-                        <li><a href="give-access.php">Give Access</a></li> -->
                       </ul>
                     </li>
                     <li class="dropdown">
@@ -93,6 +90,7 @@
                         <li><a href="<?php echo base_url() ?>income-expenditure-report">Income Expense Report</a></li>
                         <li><a href="<?php echo base_url() ?>sub-fund-report">Sub-funds Report</a></li>
                         <li><a href="<?php echo base_url() ?>receipt-payment">Receipt & Payment</a></li>
+                        <li><a href="<?php echo base_url() ?>daily-collection">Daily Collection Sheet</a></li>
                       </ul>
                     </li>
                     <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reports <span class="caret"></span>
@@ -115,12 +113,12 @@
                         </ul>
                     </li>
 
-                    <li>
+                   <!-- <li>
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Library <span class="caret"></span></a>
                        <ul class="dropdown-menu">
                       <li><a href="<?php echo base_url() ?>manage-books">Manage Books</a></li>
                     </ul>
-                    </li>
+                    </li>-->
                   </ul>
                   
                 </div>

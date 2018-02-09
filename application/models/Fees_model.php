@@ -6,6 +6,9 @@ class Fees_model extends CI_Model {
 	// Get Data By Year And paymenr mode
 	public function get_payment_data_by_id($year,$payment_type)
 	{
+		// $this->db->query("SET SQL_BIG_SELECTS=1");
+		// $this->db->query('SELECT `session`.`ses_year`, `td_fee_collection`.`col_date`, `admission_erp`.`name` as `std_name`, `admission_erp`.`elec_sub` as `elec`, `admission_erp`.`form_no`, `tb_fin_head`.`name` `fee_name`, `admission_erp`.`gen_type` as `hnrs`, `tb_fin_fees_admission`.`1st_p1` as `payamount`, `td_fee_collection`.`fee_id` as `fee_id`, `stream`.`name` as `stream_name` FROM `td_fee_collection` INNER JOIN `admission_erp` ON `admission_erp`.`id` = `td_fee_collection`.`stud_id` INNER JOIN `tb_fin_fees_admission` ON `td_fee_collection`.`stream` = `tb_fin_fees_admission`.`stream` INNER JOIN `tb_fin_head` ON `tb_fin_head`.`id` = `tb_fin_fees_admission`.`fee_name` INNER JOIN `session` ON `session`.`id` = `td_fee_collection`.`session` INNER JOIN `stream` ON `stream`.`id` = `td_fee_collection`.`stream` WHERE `td_fee_collection`.`year` = '.$year.' AND `tb_fin_fees_admission`.`stream` = '1' AND `admission_erp`.`id` = '2' GROUP BY `tb_fin_head`.`name`');
+
 		$this->db->where('td_fee_collection.year', $year);
 		$this->db->where('td_fee_collection.payment_type', $payment_type);
 		$this->db->select('stud_id,name,form_no,td_fee_collection.stream');
@@ -18,6 +21,7 @@ class Fees_model extends CI_Model {
 			$this->db->from('student_dtl');
 			$this->db->join('td_fee_collection', 'td_fee_collection.stud_id = student_dtl.id', 'inner');
 		}
+
 		$query=$this->db->get();
 		return $query->result();
 	}
@@ -66,6 +70,7 @@ class Fees_model extends CI_Model {
 			$this->db->where('tb_fin_fees_admission.stream', $stream);
 			$this->db->where('admission_erp.id', $student_id);
 			$this->db->group_by('tb_fin_head.name');
+			$this->db->query("SET SQL_BIG_SELECTS=1");
 			$this->db->select('session.ses_year,td_fee_collection.col_date,admission_erp.name as std_name,admission_erp.elec_sub as elec,admission_erp.form_no,tb_fin_head.name fee_name,admission_erp.gen_type as hnrs,tb_fin_fees_admission.1st_p1 as payamount,td_fee_collection.fee_id as fee_id,stream.name as stream_name');
 			$this->db->from('td_fee_collection');
 			$this->db->join('admission_erp', 'admission_erp.id = td_fee_collection.stud_id', 'INNER');
@@ -81,6 +86,7 @@ class Fees_model extends CI_Model {
 			$this->db->where('td_fee_collection.year', $year);
 			$this->db->where('tb_fin_fees_admission.stream', $stream);
 			$this->db->where('student_dtl.id', $student_id);
+			$this->db->query("SET SQL_BIG_SELECTS=1");
 			$this->db->select('session.ses_year,td_fee_collection.col_date,student_dtl.name as std_name,student_dtl.elect1 as elec1,student_dtl.elect2 as elec2,student_dtl.elect3 as elec3,student_dtl.form_no,tb_fin_head.name fee_name,student_dtl.honours as hnrs,tb_fin_fees_admission.1st_p1 as payamount,td_fee_collection.fee_id as fee_id,stream.name as stream_name');
 			$this->db->from('td_fee_collection');
 			$this->db->join('student_dtl', 'student_dtl.id = td_fee_collection.stud_id', 'INNER');
