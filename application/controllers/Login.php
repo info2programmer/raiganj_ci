@@ -5,7 +5,12 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('admin_view/admin_login_view');
+		if($this->session->userdata('adminlogin')){
+			redirect('student','refresh');
+		}
+		else{
+			$this->load->view('admin_view/admin_login_view');
+		}
 	}
 
 
